@@ -1,6 +1,6 @@
 const initialProps = {
   showAlert: false,
-  textAlert: ''
+  textAlert: 'Soy una alerta'
 };
 
 export default function reducer(state = initialProps, action) {

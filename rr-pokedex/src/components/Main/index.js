@@ -1,23 +1,37 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Page from './page';
+import { fetchPokemonsList } from '../../redux/actions/pokemonsListActions';
 
 class Main extends Component {
 
+  componentDidMount(){
+
+      this.props.fetchPokemonsList();
+ 
+  }
+
   render(){
 
-    const {pokemonList} = this.props;
-    console.log(pokemonList);
+    const {alerts, pokemonList} = this.props;
 
     return(
-      <Page />
+      <Page
+       pokemonList={pokemonList}
+        alerts={alerts}
+      />
     )
   }
 }
 
 const mapStateToProps = state => ({
-    pokemonList: state.pokemonList
+    pokemonList: state.pokemonList,
+    alerts: state.alerts
 });
 
-export default connect(mapStateToProps)(Main);
+const mapDispathToProps = {
+  fetchPokemonsList
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(Main);
 
