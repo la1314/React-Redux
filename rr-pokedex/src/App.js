@@ -1,4 +1,3 @@
-
 import './App.css';
 // Redux
 import store from "./redux/store";

@@ -44,8 +44,6 @@ export const fetchPokemonsList = () => async dispatch => {
     const errorMsg = error.message
     dispatch({ type: 'ALL_POKEMONS_LIST_ERROR', payload: errorMsg })
   });
-
-
 }
 
 /*export const fetchPokemonsList = async () => {
