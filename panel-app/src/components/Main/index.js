@@ -4,9 +4,9 @@ import Page from './page';
 
 class Main extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
 
-    const {get_clock, get_countDown} = this.props;
+    const { get_clock, get_countDown } = this.props;
     setInterval(() => {
       get_clock()
       get_countDown()
