@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Page from './page';
+import { fetchDeliveryNote } from '../../redux/actions/deliverynoteActions';
+import { fetchPending } from '../../redux/actions/pendingActions';
+import { fetchClock } from '../../redux/actions/clockActions';
 
 class Main extends Component {
 
   componentDidMount() {
 
-    const { get_clock, get_countDown } = this.props;
+    const { fetchClock, get_countDown, fetchDeliveryNote, fetchPending } = this.props;
+
+    fetchPending()
+    fetchDeliveryNote()
+    fetchClock()
+
     setInterval(() => {
-      get_clock()
       get_countDown()
     }, 1000);
+
   }
 
   render() {
-    const { clock, countDown } = this.props;
+    const { clock, deliveryNote, pending } = this.props;
+
     return (
       <Page
         clock={clock}
-        countDown={countDown}
+        pending={pending}
+        deliveryNote={deliveryNote}
       />
     )
   }
@@ -26,14 +36,19 @@ class Main extends Component {
 
 const mapStateToProps = state => ({
   clock: state.clock,
-  countDown: state.countDown
+  pending: state.pending,
+  deliveryNote: state.deliveryNote,
 });
 
 const mapDispatchToProps = (dispatch) => {
+
   return {
     // dispatching plain actions
-    get_clock: () => dispatch({ type: 'GET_CLOCK' }),
-    get_countDown: () => dispatch({ type: 'GET_COUNTDOWN' })
+    fetchClock: () => dispatch(fetchClock()),
+    get_countDown: () => dispatch({ type: 'GET_COUNTDOWN' }),
+    fetchDeliveryNote: () => dispatch(fetchDeliveryNote()),
+    fetchPending: () => dispatch(fetchPending())
+
   }
 }
 

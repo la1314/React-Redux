@@ -22,6 +22,6 @@ export const FETCH_DELIVERY_NOTE_ERROR = () => {
 
 export const fetchDeliveryNote = () => async dispatch => {
 
-    dispatch({ type: 'DELIVERY_NOTE_SUCCESS', payload: (Math.random() * (20 - 0) + 0) })
+    dispatch({ type: 'DELIVERY_NOTE_SUCCESS', payload: Math.round((Math.random() * (20 - 0) + 0)) })
 
 }
