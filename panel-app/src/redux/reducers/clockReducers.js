@@ -12,8 +12,6 @@ const initialProps = {
 
 export default function reducer(state = initialProps, action) {
 
-  //console.log(state.days)
-
   switch (action.type) {
 
     case "CLOCK_REQUEST":
@@ -25,7 +23,7 @@ export default function reducer(state = initialProps, action) {
     case "CLOCK_SUCCESS":
 
       var newDate = new Date(action.payload);
-      newDate.setHours(state.days[newDate.getDay()][1],0,0);
+      newDate.setHours(state.days[newDate.getDay()][1], 0, 0);
 
       return {
         ...state,
@@ -47,15 +45,15 @@ export default function reducer(state = initialProps, action) {
     case "GET_COUNTDOWN":
 
       var date = new Date(state.serverDate);
-      date.setSeconds(date.getSeconds()+1)
+      date.setSeconds(date.getSeconds() + 1)
       var timeleft = state.countDownDate - date;
 
       return {
         ...state,
         serverDate: date,
-        c_hour: updateTime(Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))),
-        c_min: updateTime(Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60))),
-        c_seg: updateTime(Math.floor((timeleft % (1000 * 60)) / 1000)),
+        c_hour: timeleft_cacl(timeleft, 'hours'),
+        c_min: timeleft_cacl(timeleft, 'minutes'),
+        c_seg: timeleft_cacl(timeleft, 'seconds'),
         hour: date.getHours(),
         min: date.getMinutes(),
         seg: date.getSeconds()
@@ -63,7 +61,7 @@ export default function reducer(state = initialProps, action) {
 
 
     default:
-      
+
       return {
         ...state
       }
@@ -78,4 +76,28 @@ function updateTime(data) {
   else {
     return data;
   }
+}
+
+function timeleft_cacl(timeleft, type) {
+
+  var value;
+
+  switch (type) {
+    case 'hours':
+      value = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      break;
+    case 'minutes':
+      value = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+      break;
+    case 'seconds':
+      value = Math.floor((timeleft % (1000 * 60)) / 1000);
+      break;
+
+    default:
+      value = 0;
+      break;
+  }
+
+  return updateTime(value)
+
 }

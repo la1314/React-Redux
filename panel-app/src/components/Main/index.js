@@ -14,7 +14,7 @@ class Main extends Component {
     fetchPending()
     fetchDeliveryNote()
     fetchClock()
-
+    get_countDown()
     setInterval(() => {
       get_countDown()
     }, 1000);
@@ -23,6 +23,10 @@ class Main extends Component {
 
   render() {
     const { clock, deliveryNote, pending } = this.props;
+
+    if (clock.c_hour === '') {
+      return null;
+    }
 
     return (
       <Page

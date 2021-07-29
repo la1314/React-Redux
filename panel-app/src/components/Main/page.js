@@ -7,11 +7,29 @@ function page(props) {
   } = props;
 
   return (
-    <div>
-      <h1>countDown Hora:{clock.c_hour} Minutos:{clock.c_min} Segundos:{clock.c_seg}</h1>
-      <h1>Albaraner: {deliveryNote.data}</h1>
-      <h1>Total: {deliveryNote.data + pending.data}</h1>
-      <h1>Pedidos: {pending.data}</h1>
+    <div className='app_container'>
+
+      <div className='app_container_header'>
+        <h1>{clock.c_hour}:{clock.c_min}:{clock.c_seg}</h1>
+      </div>
+
+      <div className='app_container_body'>
+        <div className='acb_deliveryNotes'>
+          <div className='acb_dn_text'>Albaranes</div>
+          <div className='acb_dn_value'>{deliveryNote.data}</div>
+        </div>
+
+        <div className='acb_total'>
+          <div className='acb_t_text'>Total</div>
+          <div className='acb_t_text'>{deliveryNote.data + pending.data}</div>
+        </div>
+
+        <div className='acb_pending'>
+          <div className='acb_p_text'>Pedidos</div>
+          <div className='acb_p_value'>{pending.data}</div>
+        </div>
+
+      </div>
     </div>
   )
 }
