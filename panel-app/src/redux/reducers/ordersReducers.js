@@ -8,13 +8,13 @@ export default function reducer(state = initialState, action) {
 
   switch (action.type) {
 
-    case "PENDING_REQUEST":
+    case "ORDERS_REQUEST":
       return {
         ...state,
         loading: true
       }
 
-    case "PENDING_SUCCESS":
+    case "ORDERS_SUCCESS":
       return {
         ...state,
         loading: false,
@@ -22,7 +22,7 @@ export default function reducer(state = initialState, action) {
         error: ''
       }
 
-    case "PENDING_ERROR":
+    case "ORDERS_ERROR":
       return {
         ...state,
         loading: false,

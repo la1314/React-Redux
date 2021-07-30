@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Page from './page';
 import { fetchDeliveryNote } from '../../redux/actions/deliverynoteActions';
-import { fetchPending } from '../../redux/actions/pendingActions';
+import { fetchOrders } from '../../redux/actions/ordersActions';
 import { fetchClock } from '../../redux/actions/clockActions';
+import './style.scss';
 
 class Main extends Component {
 
   componentDidMount() {
 
-    const { fetchClock, get_countDown, fetchDeliveryNote, fetchPending } = this.props;
+    const { fetchClock, get_countDown, fetchDeliveryNote, fetchOrders } = this.props;
 
-    fetchPending()
+    fetchOrders()
     fetchDeliveryNote()
     fetchClock()
-    get_countDown()
     setInterval(() => {
       get_countDown()
     }, 1000);
@@ -22,7 +22,7 @@ class Main extends Component {
   }
 
   render() {
-    const { clock, deliveryNote, pending } = this.props;
+    const { clock, deliveryNote, orders } = this.props;
 
     if (clock.c_hour === '') {
       return null;
@@ -31,7 +31,7 @@ class Main extends Component {
     return (
       <Page
         clock={clock}
-        pending={pending}
+        orders={orders}
         deliveryNote={deliveryNote}
       />
     )
@@ -40,7 +40,7 @@ class Main extends Component {
 
 const mapStateToProps = state => ({
   clock: state.clock,
-  pending: state.pending,
+  orders: state.orders,
   deliveryNote: state.deliveryNote,
 });
 
@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchClock: () => dispatch(fetchClock()),
     get_countDown: () => dispatch({ type: 'GET_COUNTDOWN' }),
     fetchDeliveryNote: () => dispatch(fetchDeliveryNote()),
-    fetchPending: () => dispatch(fetchPending())
+    fetchOrders: () => dispatch(fetchOrders())
 
   }
 }

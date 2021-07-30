@@ -2,7 +2,7 @@ function page(props) {
 
   const {
     clock,
-    pending,
+    orders,
     deliveryNote
   } = props;
 
@@ -10,7 +10,8 @@ function page(props) {
     <div className='app_container'>
 
       <div className='app_container_header'>
-        <h1>{clock.c_hour}:{clock.c_min}:{clock.c_seg}</h1>
+        <div className='ach_text'>TIME</div>
+        <div className='ach_value'>{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
       </div>
 
       <div className='app_container_body'>
@@ -21,15 +22,17 @@ function page(props) {
 
         <div className='acb_total'>
           <div className='acb_t_text'>Total</div>
-          <div className='acb_t_text'>{deliveryNote.data + pending.data}</div>
+          <div className='acb_t_value'>{deliveryNote.data + orders.data}</div>
         </div>
 
-        <div className='acb_pending'>
-          <div className='acb_p_text'>Pedidos</div>
-          <div className='acb_p_value'>{pending.data}</div>
+        <div className='acb_orders'>
+          <div className='acb_o_text'>Pedidos</div>
+          <div className='acb_o_value'>{orders.data}</div>
         </div>
-
       </div>
+
+
+
     </div>
   )
 }

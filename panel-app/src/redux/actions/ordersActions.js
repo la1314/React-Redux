@@ -1,28 +1,28 @@
-export const PENDING_REQUEST = 'PENDING_REQUEST';
-export const PENDING_SUCCESS = 'PENDING_SUCCESS';
-export const PENDING_ERROR = 'PENDING_ERROR';
+export const ORDERS_REQUEST = 'ORDERS_REQUEST';
+export const ORDERS_SUCCESS = 'ORDERS_SUCCESS';
+export const ORDERS_ERROR = 'ORDERS_ERROR';
 
-export const FETCH_PENDING_REQUEST = () => {
+export const FETCH_ORDERS_REQUEST = () => {
     return {
-        type: "PENDING_REQUEST"
+        type: "ORDERS_REQUEST"
     }
 }
 
-export const FETCH_PENDING_SUCCESS = () => {
+export const FETCH_ORDERS_SUCCESS = () => {
     return {
-        type: "PENDING_SUCCESS"
+        type: "ORDERS_SUCCESS"
     }
 }
 
-export const FETCH_PENDING_ERROR = () => {
+export const FETCH_ORDERS_ERROR = () => {
     return {
-        type: "PENDING_ERROR"
+        type: "ORDERS_ERROR"
     }
 }
 
-export const fetchPending = () => async dispatch => {
+export const fetchOrders = () => async dispatch => {
     
-    dispatch({ type: 'PENDING_SUCCESS', payload: Math.round((Math.random() * (20 - 0) + 0)) })
+    dispatch({ type: 'ORDERS_SUCCESS', payload: Math.round((Math.random() * (20 - 0) + 0)) })
 
 }
 
