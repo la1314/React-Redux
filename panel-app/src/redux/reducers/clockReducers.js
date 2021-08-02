@@ -7,7 +7,8 @@ const initialProps = {
   days: [[0, 0], [6, 18], [6, 18], [6, 18], [6, 18], [6, 17], [0, 0]],
   c_hour: '',
   C_min: '',
-  c_seg: ''
+  c_seg: '',
+  working_day: false,
 };
 
 export default function reducer(state = initialProps, action) {
@@ -22,14 +23,14 @@ export default function reducer(state = initialProps, action) {
 
     case "CLOCK_SUCCESS":
 
-      var newDate = new Date(action.payload);
-      newDate.setHours(state.days[newDate.getDay()][1], 0, 0);
+      var newDate = getWorkingDay(state.days, action.payload);
 
       return {
         ...state,
         loading: false,
         serverDate: action.payload,
-        countDownDate: newDate,
+        countDownDate: newDate.date,
+        working_day: newDate.working,
         error: ''
       }
 
@@ -49,6 +50,7 @@ export default function reducer(state = initialProps, action) {
       var timeleft = state.countDownDate - date;
 
       return {
+
         ...state,
         serverDate: date,
         c_hour: timeleft_cacl(timeleft, 'hours'),
@@ -69,6 +71,71 @@ export default function reducer(state = initialProps, action) {
   }
 }
 
+
+//Devuelve la fecha Countdown
+function getWorkingDay(days, today) {
+
+  const newDate = new Date(today);
+  const day = today.getDay();
+  const hour = today.getHours();
+  var obj = {};
+  var working = false;
+  
+  // Comprueba que se esta en un día laborable 1 Lunes - 5 Viernes
+  if (day > 0 & day < 6) {
+
+    const inicio_Jornada = days[today.getDay()][0];
+    const Fin_Jornada = days[today.getDay()][1];
+
+    if (hour > inicio_Jornada & hour < Fin_Jornada) {
+
+      
+      newDate.setHours(days[newDate.getDay()][1], 0, 0);
+
+     working = true;
+
+    } else if (hour < inicio_Jornada) {
+
+      newDate.setHours(days[newDate.getDay()][0], 0, 0);
+
+    
+
+    } else {
+
+      // Si es viernes suma 3 días
+      if (day === 5) {
+        newDate.setDate(newDate.getDate() + 3);
+
+      } else {
+        
+        newDate.setDate(newDate.getDate() + 1);
+      }
+
+      newDate.setHours(days[newDate.getDay()][0], 0, 0);
+     
+    }
+
+  } else {
+
+    if (day === 0) {
+      
+      newDate.setDate(newDate.getDate() + 1);
+    } else {
+      newDate.setDate(newDate.getDate() + 2);
+    }
+
+    newDate.setHours(days[newDate.getDay()][0], 0, 0);
+   
+  }
+
+  obj.date = newDate;
+  obj.working = working;
+
+  return obj;
+
+}
+
+//Concatena 0 a data si este es menor a 10
 function updateTime(data) {
   if (data < 10) {
     return "0" + data;
@@ -78,6 +145,7 @@ function updateTime(data) {
   }
 }
 
+//calcula el tiempo restante
 function timeleft_cacl(timeleft, type) {
 
   var value;

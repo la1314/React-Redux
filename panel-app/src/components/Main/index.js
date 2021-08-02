@@ -15,10 +15,15 @@ class Main extends Component {
     fetchOrders()
     fetchDeliveryNote()
     fetchClock()
-    setInterval(() => {
+    get_countDown()
+    this.timer = setInterval(() => {
       get_countDown()
     }, 1000);
 
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   render() {

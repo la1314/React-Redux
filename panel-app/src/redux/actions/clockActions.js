@@ -30,7 +30,7 @@ export const GET_COUNTDOWN_ACTION = () => {
 export const fetchClock = () => async dispatch => {
 
     //No admite octal en modo restringido "08" mes 0-11
-    const today = new Date(2021,7-1,27,13,18,15);
+    const today = new Date(2021,8-1,3,13,0,0);
     dispatch({ type: 'CLOCK_SUCCESS', payload: today })
 
 }

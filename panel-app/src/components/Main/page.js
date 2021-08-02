@@ -10,7 +10,12 @@ function page(props) {
     <div className='app_container'>
 
       <div className='app_container_header'>
-        <div className='ach_text'>TIME</div>
+
+        {clock.working_day
+          ? <div className='ach_text'>Fin de Jornada en</div>
+          : <div className='ach_text'>Inicio de Jornada en</div>
+        }
+
         <div className='ach_value'>{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
       </div>
 
