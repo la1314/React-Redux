@@ -16,9 +16,24 @@ class Main extends Component {
     fetchDeliveryNote()
     fetchClock()
     get_countDown()
+
     this.timer = setInterval(() => {
       get_countDown()
     }, 1000);
+
+  }
+
+
+  componentDidUpdate(preProps) {
+
+    const { fetchClock, get_countDown, fetchOrders, fetchDeliveryNote } = this.props;
+
+    if (preProps.clock.min === 0 & preProps.clock.seg === 0) {
+      fetchClock()
+      get_countDown()
+      fetchOrders()
+      fetchDeliveryNote()
+    }
 
   }
 

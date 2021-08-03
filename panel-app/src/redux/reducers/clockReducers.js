@@ -8,6 +8,7 @@ const initialProps = {
   c_hour: '',
   C_min: '',
   c_seg: '',
+  c_day: '',
   working_day: false,
 };
 
@@ -56,6 +57,7 @@ export default function reducer(state = initialProps, action) {
         c_hour: timeleft_cacl(timeleft, 'hours'),
         c_min: timeleft_cacl(timeleft, 'minutes'),
         c_seg: timeleft_cacl(timeleft, 'seconds'),
+        c_days: timeleft_cacl(timeleft, 'days'),
         hour: date.getHours(),
         min: date.getMinutes(),
         seg: date.getSeconds()
@@ -80,52 +82,55 @@ function getWorkingDay(days, today) {
   const hour = today.getHours();
   var obj = {};
   var working = false;
-  
+
   // Comprueba que se esta en un día laborable 1 Lunes - 5 Viernes
   if (day > 0 & day < 6) {
 
     const inicio_Jornada = days[today.getDay()][0];
     const Fin_Jornada = days[today.getDay()][1];
 
-    if (hour > inicio_Jornada & hour < Fin_Jornada) {
 
-      
+    if (hour >= inicio_Jornada & hour < Fin_Jornada) {
+
+
       newDate.setHours(days[newDate.getDay()][1], 0, 0);
 
-     working = true;
+      working = true;
 
     } else if (hour < inicio_Jornada) {
 
       newDate.setHours(days[newDate.getDay()][0], 0, 0);
 
-    
+
 
     } else {
+
+      console.log(day);
 
       // Si es viernes suma 3 días
       if (day === 5) {
         newDate.setDate(newDate.getDate() + 3);
 
       } else {
-        
+
         newDate.setDate(newDate.getDate() + 1);
       }
 
       newDate.setHours(days[newDate.getDay()][0], 0, 0);
-     
+      console.log(newDate);
     }
 
   } else {
 
     if (day === 0) {
-      
+
       newDate.setDate(newDate.getDate() + 1);
     } else {
       newDate.setDate(newDate.getDate() + 2);
     }
 
     newDate.setHours(days[newDate.getDay()][0], 0, 0);
-   
+
   }
 
   obj.date = newDate;
@@ -148,15 +153,23 @@ function updateTime(data) {
 //calcula el tiempo restante
 function timeleft_cacl(timeleft, type) {
 
+  console.log(timeleft);
   var value;
 
   switch (type) {
+
+    case 'days':
+      value = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+      break;
+
     case 'hours':
       value = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       break;
+
     case 'minutes':
       value = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
       break;
+
     case 'seconds':
       value = Math.floor((timeleft % (1000 * 60)) / 1000);
       break;
