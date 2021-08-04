@@ -41,12 +41,8 @@ function page(props) {
         </div>
       </div>
 
-
-
     </div>
   )
 }
-
-
 
 export default page;

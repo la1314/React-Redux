@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const CLOCK_REQUEST = 'CLOCK_REQUEST';
 export const CLOCK_SUCCESS = 'CLOCK_SUCCESS';
 export const CLOCK_ERROR = 'CLOCK_ERROR';
@@ -29,15 +31,38 @@ export const GET_COUNTDOWN_ACTION = () => {
 
 export const fetchClock = () => async dispatch => {
 
-    //var random = Math.round(Math.random() * (1 - 0) + 0);
-    //No admite octal en modo restringido "08" mes 0-11
-    /*if (random) {
-        const today = new Date(2021, 8 - 1, 3, 18, 59, 55);
-        dispatch({ type: 'CLOCK_SUCCESS', payload: today })
-    } else {
-        const today = new Date(2021, 8 - 1, 3, 18, 0, 0);
-        dispatch({ type: 'CLOCK_SUCCESS', payload: today })
-    }*/
-    const today = new Date(2021, 8 - 1, 7, 6, 0, 0);
-    dispatch({ type: 'CLOCK_SUCCESS', payload: today })
+    dispatch({ type: 'CLOCK_REQUEST' })
+    var bodyFormData = new FormData();
+    bodyFormData.append('action', 'getDate');
+    var url = 'http://192.168.1.155/php/query.php';
+
+    await axios({
+        method: 'post',
+        url: url,
+        data: bodyFormData,
+        header: {
+            'content-type': 'multipart/form-data'
+        }
+    }).then(
+
+        res => {
+
+            const date = res.data[0][0].split(' ');
+            const year = date[0].split('-')[0];
+            const month = date[0].split('-')[1];
+            const day = date[0].split('-')[2];
+            const hour = date[1].split(':')[0];
+            const minutes = date[1].split(':')[1];
+            const seconds = date[1].split(':')[2];
+
+            const today = new Date(year, month-1, day, hour, minutes, seconds);
+            dispatch({ type: 'CLOCK_SUCCESS', payload: today })
+        }
+
+    ).catch(error => {
+        const errorMsg = error.message
+        dispatch({ type: 'CLOCK_ERROR', payload: errorMsg })
+    });
+
+
 }

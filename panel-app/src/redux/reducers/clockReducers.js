@@ -105,8 +105,6 @@ function getWorkingDay(days, today) {
 
     } else {
 
-      console.log(day);
-
       // Si es viernes suma 3 días
       if (day === 5) {
         newDate.setDate(newDate.getDate() + 3);
@@ -117,7 +115,6 @@ function getWorkingDay(days, today) {
       }
 
       newDate.setHours(days[newDate.getDay()][0], 0, 0);
-      console.log(newDate);
     }
 
   } else {
@@ -153,7 +150,6 @@ function updateTime(data) {
 //calcula el tiempo restante
 function timeleft_cacl(timeleft, type) {
 
-  console.log(timeleft);
   var value;
 
   switch (type) {

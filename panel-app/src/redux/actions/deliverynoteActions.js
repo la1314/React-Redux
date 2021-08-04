@@ -1,3 +1,4 @@
+import axios from 'axios';
 export const DELIVERY_NOTE_REQUEST = 'DELIVERY_NOTE_REQUEST';
 export const DELIVERY_NOTE_SUCCESS = 'DELIVERY_NOTE_SUCCESS';
 export const DELIVERY_NOTE_ERROR = 'DELIVERY_NOTE_ERROR';
@@ -22,6 +23,29 @@ export const FETCH_DELIVERY_NOTE_ERROR = () => {
 
 export const fetchDeliveryNote = () => async dispatch => {
 
-    dispatch({ type: 'DELIVERY_NOTE_SUCCESS', payload: Math.round((Math.random() * (20 - 0) + 0)) })
+    dispatch({ type: 'DELIVERY_NOTE_REQUEST' })
 
+    var url = 'http://192.168.1.155/php/query.php';
+    var bodyFormData = new FormData();
+    bodyFormData.append('action', 'getDeliveryNote');
+    
+
+    await axios({
+        method: 'post',
+        url: url,
+        data: bodyFormData,
+        header: {
+            'content-type': 'multipart/form-data'
+        }
+    }).then(
+
+        res => {
+            console.log(res.data);
+            dispatch({ type: 'DELIVERY_NOTE_SUCCESS', payload: res.data })
+        }
+
+    ).catch(error => {
+        const errorMsg = error.message
+        dispatch({ type: 'DELIVERY_NOTE_ERROR', payload: errorMsg })
+    });
 }
