@@ -40,7 +40,7 @@ export const fetchDeliveryNote = () => async dispatch => {
     }).then(
 
         res => {
-            console.log(res.data);
+            
             dispatch({ type: 'DELIVERY_NOTE_SUCCESS', payload: res.data })
         }
 

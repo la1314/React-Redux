@@ -40,7 +40,7 @@ export const fetchOrders = () => async dispatch => {
   }).then(
 
     res => {
-      console.log(res.data);
+      
       dispatch({ type: 'ORDERS_SUCCESS', payload: res.data })
     }
 
