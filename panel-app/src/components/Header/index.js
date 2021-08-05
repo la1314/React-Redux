@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Page from './page';
 import { fetchClock } from '../../redux/actions/clockActions';
+import './style.scss';
 
 class Header extends Component {
 
@@ -11,13 +12,14 @@ class Header extends Component {
 
     fetchClock()
    
-
+    //Luego de 1 segundo inicia el CountDown
     this.timer = setInterval(() => {
       get_countDown()
     }, 1000);
   }
 
 
+  //Cada 30 minutos comprueba que la hora de la app sea igual a la del servidor
   componentDidUpdate(preProps) {
 
     const { fetchClock } = this.props;
@@ -44,10 +46,12 @@ class Header extends Component {
   }
 }
 
+//Se declaran los state a importar
 const mapStateToProps = state => ({
   clock: state.clock,
 });
 
+//Se declaran los dispatch a importar
 const mapDispatchToProps = (dispatch) => {
 
   return {

@@ -1,4 +1,3 @@
-
 function page(props) {
 
   const {
@@ -14,18 +13,12 @@ function page(props) {
         : <div className='ach_text'>Inicio de Jornada en</div>
       }
 
-      {
-
-      clock.c_days === undefined
-        ?
-        <div className='ach_value'>00:00:00</div>
-        : (
-          clock.c_days === '00'
-            ? <div className='ach_value'>{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
-            : <div className='ach_value'>{clock.c_days}:{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
+      {clock.c_days === undefined
+        ? <div className='ach_value'>00:00:00</div>
+        : (clock.c_days === '00'
+          ? <div className='ach_value'>{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
+          : <div className='ach_value'>{clock.c_days}:{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
         )
-
-
       }
 
     </div>

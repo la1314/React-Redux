@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import Page from './page';
 import { fetchDeliveryNote } from '../../redux/actions/deliverynoteActions';
 import { fetchOrders } from '../../redux/actions/ordersActions';
+import './style.scss';
 
-class Container extends Component {
+class Body extends Component {
 
   componentDidMount() {
 
@@ -14,20 +15,20 @@ class Container extends Component {
     fetchDeliveryNote()
   }
 
-
+  //Cada 10 minutos comprueba si han habido cambios en Pedidos o Albaradnes
   componentDidUpdate(preProps) {
 
-    const {fetchOrders, fetchDeliveryNote } = this.props;
+    const { fetchOrders, fetchDeliveryNote } = this.props;
 
-    if ( (preProps.clock.min%10 === 0) & preProps.clock.seg === 0) {
-      
+    if ((preProps.clock.min % 10 === 0) & preProps.clock.seg === 0) {
+
       fetchOrders()
       fetchDeliveryNote()
     }
   }
 
   render() {
-    const {deliveryNote, orders } = this.props;
+    const { deliveryNote, orders } = this.props;
 
     return (
       <Page
@@ -53,5 +54,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Container);
+export default connect(mapStateToProps, mapDispatchToProps)(Body);
 

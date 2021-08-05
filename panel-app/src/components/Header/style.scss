@@ -1,0 +1,31 @@
+$border-color: rgb(151, 96, 96);
+$border-type: solid;
+$border-grueso: 5px;
+$border-fino: 2.5px;
+
+$font-countdown-text-color: green;
+$font-countdown-value-color: red;
+
+.app_container_header {
+
+    height: 35vh;
+    box-sizing: border-box;
+    border: $border-type  $border-grueso $border-color;
+    border-bottom: $border-fino $border-type  $border-color;
+    
+
+    .ach_text {
+        
+        height: 25%;
+        font-family: 'orbitron';
+        color: greenyellow;
+        font-size: 5vw;
+        
+    }  
+    
+    .ach_value {
+        font-family: 'scoreboard';
+        color: red;
+        font-size: 10vw;
+    }
+}

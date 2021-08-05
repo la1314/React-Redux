@@ -1,5 +1,5 @@
 // Container
-import Container from '../Container';
+import Body from '../Body';
 import Header from '../Header';
 
 function page() {
@@ -8,7 +8,7 @@ function page() {
     <div className='app_container'>
 
       <Header/>
-      <Container/>
+      <Body/>
 
     </div>
   )
