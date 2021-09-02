@@ -45,40 +45,38 @@ $font-orders-value-color: red;
         border-top: $border-fino $border-type  $border-color;
 
     }
-}
 
-.acb_dn_text {
-    color: $font-deliveryNotes-text-color;
-}
-
-.acb_t_text {
-    color: $font-total-text-color;
-}
-
-.acb_o_text{
-    color: $font-orders-text-color;
-}
-
-.acb_dn_text, .acb_t_text, .acb_o_text {
-
+    .acb_dn_text {
+        color: $font-deliveryNotes-text-color;
+    }
     
-    height: 18%;
-    font-family: 'orbitron';
-    font-size: 5vw;;
+    .acb_t_text {
+        color: $font-total-text-color;
+    }
+    
+    .acb_o_text{
+        color: $font-orders-text-color;
+    }
+    
+    .acb_dn_text, .acb_t_text, .acb_o_text {
+    
+        
+        height: 18%;
+        font-family: 'orbitron';
+        font-size: 5vw;;
+    }
+    
+    
+    .acb_dn_value, .acb_t_value, .acb_o_value {
+    
+    
+        color: yellow;
+        font-size: 21vw;
+        font-family: 'scoreboard';
+    }
+    
+    .acb_t_value{
+        color: $font-total-value-color;
+    }
+
 }
-
-
-.acb_dn_value, .acb_t_value, .acb_o_value {
-
-
-    color: yellow;
-    font-size: 21vw;
-    font-family: 'scoreboard';
-}
-
-.acb_t_value{
-    color: $font-total-value-color;
-}
-
-
-

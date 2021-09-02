@@ -1,0 +1,64 @@
+$border-color: rgb(151, 96, 96);
+$border-type: solid;
+$border-grueso: 5px;
+$border-fino: 2.5px;
+
+$font-total-value-color: red;
+$font-deliveryNotes-value-color: yellow;
+$font-orders-value-color: yellow;
+$font-countdown-value-color: red;
+
+.app_container_header {
+
+    height: 25vmin;
+    border: $border-type  $border-grueso $border-color;
+    
+    display: grid;
+    grid-template-columns: 3fr 3fr;    
+
+    .ach_data {
+        
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;  
+    }
+
+    .ach_total {
+        
+        border-right: $border-type $border-grueso $border-color;
+        border-left: $border-type $border-grueso $border-color;
+    }
+
+    .ach_orders {
+        border-right: $border-type $border-grueso $border-color;
+    }
+
+    //Valor delivery notes
+    .ach_dn_value {
+        color: $font-deliveryNotes-value-color;
+    }
+
+    //Valor total
+    .ach_t_value{
+        
+        color: $font-total-value-color;
+    }
+
+    //Valor orders
+    .ach_o_value {
+        
+        color: $font-orders-value-color;
+    }
+
+    //valor countdown
+    .ach_c_value {
+        
+        color: $font-countdown-value-color;
+    }
+
+    .ach_dn_value, .ach_t_value, .ach_o_value, .ach_c_value {
+        
+        font-size: 20vmin;
+        font-family: 'scoreboard';
+    }
+    
+}

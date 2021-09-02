@@ -5,9 +5,19 @@ import './style.scss';
 
 class Main extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {boolean: false};
+  }
+
+
+
   render() {
+
+    const {boolean} = this.state
+
     return (
-      <Page />
+      <Page boolean={boolean} />
     )
   }
 }

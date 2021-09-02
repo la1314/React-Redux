@@ -1,0 +1,82 @@
+$border-color: rgb(151, 96, 96);
+$border-type: solid;
+$border-grueso: 5px;
+$border-fino: 2.5px;
+
+$font-total-text-color: white;
+$font-total-value-color: red;
+$font-deliveryNotes-text-color: white;
+$font-deliveryNotes-value-color: red;
+$font-orders-text-color: white;
+$font-orders-value-color: red;
+
+
+.app_container_body {
+
+    height: 65vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "left center right";
+    
+    .acb_deliveryNotes{
+
+        grid-area: left;
+        border: $border-grueso $border-type $border-color;
+        border-right: $border-fino $border-type  $border-color;
+        border-top: $border-fino $border-type  $border-color;
+        
+    }
+
+    .acb_total{
+
+        grid-area: center;
+        border: $border-grueso $border-type $border-color;
+        border-right: $border-fino $border-type $border-color;
+        border-left: $border-fino $border-type $border-color;
+        border-top: $border-fino $border-type  $border-color;
+    }
+
+    .acb_orders{
+
+        grid-area: right;
+        border: $border-grueso $border-type $border-color;
+        border-left: $border-fino $border-type $border-color;
+        border-top: $border-fino $border-type  $border-color;
+
+    }
+
+    .acb_dn_text {
+        color: $font-deliveryNotes-text-color;
+    }
+    
+    .acb_t_text {
+        color: $font-total-text-color;
+    }
+    
+    .acb_o_text{
+        color: $font-orders-text-color;
+    }
+    
+    .acb_dn_text, .acb_t_text, .acb_o_text {
+    
+        
+        height: 18%;
+        font-family: 'orbitron';
+        font-size: 5vw;;
+    }
+    
+    
+    .acb_dn_value, .acb_t_value, .acb_o_value {
+    
+    
+        color: yellow;
+        font-size: 21vw;
+        font-family: 'scoreboard';
+    }
+    
+    .acb_t_value{
+        color: $font-total-value-color;
+    }
+
+}

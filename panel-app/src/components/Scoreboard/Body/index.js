@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Page from './page';
-import { fetchDeliveryNote } from '../../redux/actions/deliverynoteActions';
-import { fetchOrders } from '../../redux/actions/ordersActions';
+import { fetchDeliveryNote } from '../../../redux/actions/deliverynoteActions';
+import { fetchOrders } from '../../../redux/actions/ordersActions';
 import './style.scss';
 
 class Body extends Component {

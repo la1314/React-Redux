@@ -1,14 +1,31 @@
 // Container
-import Body from '../Body';
-import Header from '../Header';
+import HEADER from '../Scoreboard/Header';
+import BODY from '../Scoreboard/Body';
+import HEADER_R from '../Scoreboard_reduced/Header';
+import BODY_R from '../Scoreboard_reduced/Body';
 
-function page() {
+
+function page(props) {
+
+  const {
+    boolean
+  } = props;
+
 
   return (
     <div className='app_container'>
 
-      <Header/>
-      <Body/>
+      {boolean ?
+        <HEADER />
+        :
+        <HEADER_R />
+      }
+
+      {boolean ?
+        <BODY />
+        :
+        <BODY_R />
+      }
 
     </div>
   )

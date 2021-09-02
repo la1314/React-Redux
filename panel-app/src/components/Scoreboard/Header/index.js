@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Page from './page';
-import { fetchClock } from '../../redux/actions/clockActions';
+import { fetchClock } from '../../../redux/actions/clockActions';
 import './style.scss';
 
 class Header extends Component {
