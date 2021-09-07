@@ -3,7 +3,7 @@ $border-type: solid;
 $border-grueso: 5px;
 $border-fino: 2.5px;
 
-$font-countdown-text-color: green;
+$font-countdown-text-color: greenyellow;
 $font-countdown-value-color: red;
 
 .app_container_header {
@@ -12,20 +12,22 @@ $font-countdown-value-color: red;
     box-sizing: border-box;
     border: $border-type  $border-grueso $border-color;
     border-bottom: $border-fino $border-type  $border-color;
-    
+    display: grid;
+    grid-template-columns: 1fr;
+ 
 
     .ach_text {
         
         height: 25%;
         font-family: 'orbitron';
-        color: greenyellow;
+        color: $font-countdown-text-color;
         font-size: 5vw;
         
     }  
     
     .ach_value {
         font-family: 'scoreboard';
-        color: red;
+        color: $font-countdown-value-color;
         font-size: 10vw;
     }
 }

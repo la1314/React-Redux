@@ -8,26 +8,26 @@ function page(props) {
 
   return (
 
-    <div className='app_container_header'>
+    <div className='app_container_header_R'>
 
-      <div className='ach_data'>
-        <div className='ach_deliveryNotes'>
-          <div className='ach_dn_value'>{deliveryNote.data}</div>
+      <div className='ach_data_R'>
+        <div className='ach_deliveryNotes_R'>
+          <div className='ach_dn_value_R'>{deliveryNote.data}</div>
         </div>
-        <div className='ach_total'>
-          <div className='ach_t_value'>{deliveryNote.data + orders.data}</div>
+        <div className='ach_total_R'>
+          <div className='ach_t_value_R'>{deliveryNote.data + orders.data}</div>
         </div>
-        <div className='ach_orders'>
-          <div className='ach_o_value'>{orders.data}</div>
+        <div className='ach_orders_R'>
+          <div className='ach_o_value_R'>{orders.data}</div>
         </div>
       </div>
 
-      <div className='ach_countdown'>
+      <div className='ach_countdown_R'>
         {clock.c_days === undefined
-          ? <div className='ach_c_value'>00:00:00</div>
+          ? <div className='ach_c_value_R'>00:00:00</div>
           : (clock.c_days === '00'
-            ? <div className='ach_c_value'>{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
-            : <div className='ach_c_value'>{clock.c_days}:{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
+            ? <div className='ach_c_value_R'>{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
+            : <div className='ach_c_value_R'>{clock.c_days}:{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
           )
         }
       </div>

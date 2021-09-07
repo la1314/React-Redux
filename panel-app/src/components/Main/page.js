@@ -8,20 +8,20 @@ import BODY_R from '../Scoreboard_reduced/Body';
 function page(props) {
 
   const {
-    boolean
+    panel
   } = props;
 
 
   return (
     <div className='app_container'>
 
-      {boolean ?
+      {panel ?
         <HEADER />
         :
         <HEADER_R />
       }
 
-      {boolean ?
+      {panel ?
         <BODY />
         :
         <BODY_R />

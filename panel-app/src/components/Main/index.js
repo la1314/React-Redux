@@ -5,28 +5,64 @@ import './style.scss';
 
 class Main extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {boolean: false};
+
+  //Se comprueba cada 5 segundos si han pasado los minutos necesarios
+  //para cambiar el tipo de panel
+  componentDidMount() {
+
+    this.timer = setInterval(() => {
+      this.checkPanel()
+    }, 5000);
+
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
 
+  // True Scoreboard | False Reduced Scoreboard
+  checkPanel = () => {
+
+    const { clock, dispatchPanel } = this.props
+
+    var n = clock.min;
+
+    if (n > 9) {
+      n = n % 10
+    }
+    
+    if (n < 7) {
+      dispatchPanel(1)
+    } else {
+      dispatchPanel(0)
+    }
+
+  }
 
   render() {
 
-    const {boolean} = this.state
+    const { panel } = this.props
 
     return (
-      <Page boolean={boolean} />
+      <Page panel={panel.type} />
     )
   }
 }
 
 const mapStateToProps = state => ({
   clock: state.clock,
+  panel: state.panel
 });
 
+//Se declaran los dispatch a importar
+const mapDispatchToProps = (dispatch) => {
 
+  return {
+    // dispatching plain actions
+    dispatchPanel: (value) => dispatch({ type: 'PANEL_SUCCESS', payload: value })
+  }
+}
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
 
