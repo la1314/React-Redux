@@ -1,0 +1,24 @@
+$border-color: rgb(151, 96, 96);
+$border-type: solid;
+$border-grueso: 5px;
+$border-fino: 2.5px;
+
+@media (min-width: 1024px) {
+    .app_container_body_R {
+        height: 65vh;
+        display: grid;
+        grid-template-columns: 1fr;
+
+        .acb_text_R {
+            display: grid;
+            padding: 5vmin;
+            font-size: 8vmin;
+            text-align: justify;
+            border: $border-type $border-grueso $border-color;
+            border-top: 0;
+
+            //Centtra el contenido
+            place-items: center;
+        }
+    }
+}

@@ -7,27 +7,30 @@ $font-countdown-text-color: greenyellow;
 $font-countdown-value-color: red;
 
 .app_container_header {
-
-    height: 35vh;
+    height: 34vh;
     box-sizing: border-box;
-    border: $border-type  $border-grueso $border-color;
-    border-bottom: $border-fino $border-type  $border-color;
+    border: $border-type $border-grueso $border-color;
+    border-bottom: $border-fino $border-type $border-color;
     display: grid;
     grid-template-columns: 1fr;
- 
 
     .ach_text {
-        
-        height: 25%;
-        font-family: 'orbitron';
+        display: grid;
+        align-content: center;
+        font-family: "orbitron";
         color: $font-countdown-text-color;
-        font-size: 5vw;
-        
-    }  
-    
-    .ach_value {
-        font-family: 'scoreboard';
+        font-size: 9vmin;
+    }
+
+    .ach_value, .ach_value_4 {
+        display: grid;
+        align-content: center;
+        font-family: "scoreboard";
         color: $font-countdown-value-color;
-        font-size: 10vw;
+        font-size: 20vmin;
+    }
+
+    .ach_value_4 {
+        font-size: 15vmin;
     }
 }

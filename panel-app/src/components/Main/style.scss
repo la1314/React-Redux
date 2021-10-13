@@ -1,13 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
 
 @font-face {
-    font-family: 'scoreboard';
-    src: local('scoreboard'), url(../../fonts/scoreboard.ttf) format('truetype');
+    font-family: "scoreboard";
+    src: local("scoreboard"), url(../../fonts/scoreboard.ttf) format("truetype");
 }
 
-@import url('https://fonts.googleapis.com/css?family=Orbitron');
+@import url("https://fonts.googleapis.com/css?family=Orbitron");
 
-
+body {
+    background-color: black;
+}
 
 .app_container {
     height: 100vh;

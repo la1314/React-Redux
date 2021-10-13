@@ -5,13 +5,18 @@ import { fetchClock } from '../../../redux/actions/clockActions';
 import { fetchDeliveryNote } from '../../../redux/actions/deliverynoteActions';
 import { fetchOrders } from '../../../redux/actions/ordersActions';
 import './style.scss';
+import './stylepc.scss';
 
 class Header extends Component {
 
+  _isMounted = false;
+
   componentDidMount() {
 
-    const { fetchClock, get_countDown, fetchDeliveryNote, fetchOrders } = this.props;
+    this._isMounted = true;
 
+    const { fetchClock, get_countDown, fetchDeliveryNote, fetchOrders } = this.props;
+    
     fetchOrders()
     fetchDeliveryNote()
     fetchClock()
@@ -41,6 +46,7 @@ class Header extends Component {
   }
 
   componentWillUnmount() {
+    this._isMounted = false;
     clearInterval(this.timer);
   }
 

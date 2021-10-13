@@ -27,7 +27,7 @@ function page(props) {
           ? <div className='ach_c_value_R'>00:00:00</div>
           : (clock.c_days === '00'
             ? <div className='ach_c_value_R'>{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
-            : <div className='ach_c_value_R'>{clock.c_days}:{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
+            : <div className='ach_c_value_R_4'>{clock.c_days}:{clock.c_hour}:{clock.c_min}:{clock.c_seg}</div>
           )
         }
       </div>

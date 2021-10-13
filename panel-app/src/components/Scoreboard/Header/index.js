@@ -3,18 +3,23 @@ import { connect } from 'react-redux';
 import Page from './page';
 import { fetchClock } from '../../../redux/actions/clockActions';
 import './style.scss';
+import './stylepc.scss';
 
 class Header extends Component {
 
+  _isMounted = false;
+
   componentDidMount() {
+
+    this._isMounted = true;
 
     const { fetchClock, get_countDown } = this.props;
 
-    fetchClock()
+    fetchClock();
    
     //Luego de 1 segundo inicia el CountDown
     this.timer = setInterval(() => {
-      get_countDown()
+      get_countDown();
     }, 1000);
   }
 
@@ -31,6 +36,8 @@ class Header extends Component {
   }
 
   componentWillUnmount() {
+    
+    this._isMounted = false;
     clearInterval(this.timer);
   }
 

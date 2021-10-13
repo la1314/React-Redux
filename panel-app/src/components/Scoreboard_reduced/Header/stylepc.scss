@@ -1,0 +1,50 @@
+$border-color: rgb(151, 96, 96);
+$border-type: solid;
+$border-grueso: 5px;
+$border-fino: 2.5px;
+
+@media (min-width: 1024px) {
+
+    .app_container_header_R {
+        height: 35vh;
+        display: grid;
+        grid-template-columns: 3fr 3fr;
+        grid-template-areas: 
+        "left right";  
+
+        //Div DeliveryNotes, Total, Orders
+        .ach_data_R {
+            
+            display: grid;
+            grid-area: left;
+            align-content: center;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            border: $border-type $border-grueso $border-color;
+        }
+
+        //Div countdown
+        .ach_countdown_R {
+            
+            display: grid;
+            grid-area: right;
+            align-content: center;
+            border: $border-type $border-grueso $border-color;
+            border-left: 0;
+        }
+
+        .ach_total_R {
+            border-right: $border-type $border-grueso $border-color;
+            border-left: $border-type $border-grueso $border-color;
+        }
+
+        .ach_deliveryNotes_R,
+        .ach_total_R,
+        .ach_orders_R {
+            display: grid;
+            align-content: center;
+        }
+
+      
+    }
+}

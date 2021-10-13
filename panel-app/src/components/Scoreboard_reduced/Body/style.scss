@@ -7,18 +7,23 @@ $font-body-text-color: white;
 
 .app_container_body_R {
 
-    height: 65vh;
+    height: 50vh;
     display: grid;
     grid-template-columns: 1fr;
-    
+   
     .acb_text_R {
         
-        padding: 5vmin;
+        display: grid;
+        padding: 3vmin;
         color: $font-body-text-color;
-        font-size: 5vmin;
+        font-size: 10vmin;
         text-align: justify;
         border: $border-type $border-grueso $border-color;
-        border-top: 0;
-        
+
+        //Centra el contenido
+        place-items: center;
     }
 }
+
+
+//Phone Resolution

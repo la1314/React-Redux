@@ -5,7 +5,6 @@ import './style.scss';
 
 class Main extends Component {
 
-
   //Se comprueba cada 5 segundos si han pasado los minutos necesarios
   //para cambiar el tipo de panel
   componentDidMount() {
@@ -13,13 +12,11 @@ class Main extends Component {
     this.timer = setInterval(() => {
       this.checkPanel()
     }, 5000);
-
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
   }
-
 
   // True Scoreboard | False Reduced Scoreboard
   checkPanel = () => {
@@ -32,7 +29,13 @@ class Main extends Component {
       n = n % 10
     }
     
-    if (n < 7) {
+   /* if (n < 6) {
+      dispatchPanel(1)
+    } else {
+      dispatchPanel(0)
+    }*/
+
+    if ( n%2 === 0) {
       dispatchPanel(1)
     } else {
       dispatchPanel(0)
@@ -50,6 +53,7 @@ class Main extends Component {
   }
 }
 
+//Se cargan los states del storage
 const mapStateToProps = state => ({
   clock: state.clock,
   panel: state.panel
@@ -59,7 +63,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => {
 
   return {
-    // dispatching plain actions
+    // Dispatching plain actions
     dispatchPanel: (value) => dispatch({ type: 'PANEL_SUCCESS', payload: value })
   }
 }

@@ -4,10 +4,15 @@ import Page from './page';
 import { fetchDeliveryNote } from '../../../redux/actions/deliverynoteActions';
 import { fetchOrders } from '../../../redux/actions/ordersActions';
 import './style.scss';
+import './stylepc.scss';
 
 class Body extends Component {
 
+  _isMounted = false;
+
   componentDidMount() {
+
+    this._isMounted = true;
 
     const { fetchDeliveryNote, fetchOrders } = this.props;
 
@@ -25,6 +30,10 @@ class Body extends Component {
       fetchOrders()
       fetchDeliveryNote()
     }
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
