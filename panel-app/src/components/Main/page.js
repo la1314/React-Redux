@@ -4,7 +4,9 @@ import BODY from '../Scoreboard/Body';
 import HEADER_R from '../Scoreboard_reduced/Header';
 import BODY_R from '../Scoreboard_reduced/Body';
 
-
+/**
+ * Muestra unos componentes dependiendo al valor actual del state panel
+ */
 function page(props) {
 
   const {
@@ -15,13 +17,13 @@ function page(props) {
   return (
     <div className='app_container'>
 
-      {panel ?
+      {1 ?
         <HEADER />
         :
         <HEADER_R />
       }
 
-      {panel ?
+      {1 ?
         <BODY />
         :
         <BODY_R />

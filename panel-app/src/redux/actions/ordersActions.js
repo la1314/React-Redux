@@ -1,3 +1,7 @@
+/**
+ * Actions relacionadas con los Pedidos
+ */
+
 import axios from 'axios';
 export const ORDERS_REQUEST = 'ORDERS_REQUEST';
 export const ORDERS_SUCCESS = 'ORDERS_SUCCESS';
@@ -21,6 +25,7 @@ export const FETCH_ORDERS_ERROR = () => {
   }
 }
 
+//Función asincrona que recupera el total de Pedidos pedientes
 export const fetchOrders = () => async dispatch => {
 
   dispatch({ type: 'ORDERS_REQUEST' })

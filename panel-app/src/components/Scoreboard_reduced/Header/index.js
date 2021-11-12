@@ -9,6 +9,7 @@ import './stylepc.scss';
 
 class Header extends Component {
 
+  //Variable utilizada para comprobar el montaje del componente en el DOM virtual
   _isMounted = false;
 
   componentDidMount() {
@@ -16,11 +17,11 @@ class Header extends Component {
     this._isMounted = true;
 
     const { fetchClock, get_countDown, fetchDeliveryNote, fetchOrders } = this.props;
-    
+
     fetchOrders()
     fetchDeliveryNote()
     fetchClock()
-    
+
     //Luego de 1 segundo inicia el CountDown
     this.timer = setInterval(() => {
       get_countDown()
@@ -29,12 +30,13 @@ class Header extends Component {
 
 
   //Cada 30 minutos comprueba que la hora de la app sea igual a la del servidor
+  //Cada 10 minutos comprueba si han habido cambios en Pedidos o Albaranes
   componentDidUpdate(preProps) {
 
     const { fetchClock, fetchOrders, fetchDeliveryNote } = this.props;
 
-    if ( (preProps.clock.min%30 === 0) & preProps.clock.seg === 0) {
-      
+    if ((preProps.clock.min % 30 === 0) & preProps.clock.seg === 0) {
+
       fetchClock()
     }
 
@@ -45,6 +47,7 @@ class Header extends Component {
     }
   }
 
+  //Se desmonta el componente correctamente y se limpia el intervalo creado
   componentWillUnmount() {
     this._isMounted = false;
     clearInterval(this.timer);
@@ -53,7 +56,7 @@ class Header extends Component {
 
   render() {
     const { clock, deliveryNote, orders } = this.props;
-    
+
     return (
       <Page
         clock={clock}

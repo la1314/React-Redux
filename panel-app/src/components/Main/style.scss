@@ -1,11 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
-
 @font-face {
     font-family: "scoreboard";
     src: local("scoreboard"), url(../../fonts/scoreboard.ttf) format("truetype");
+    font-family: "Orbitron";
+    src: local("Orbitron"), url(../../fonts/Orbitron.ttf) format("truetype");
+    font-family: "PatuaOne";
+    src: local("PatuaOne"), url(../../fonts/PatuaOne.ttf) format("truetype");
 }
 
-@import url("https://fonts.googleapis.com/css?family=Orbitron");
+* {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
 
 body {
     background-color: black;

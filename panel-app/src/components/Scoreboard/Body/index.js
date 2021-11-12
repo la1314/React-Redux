@@ -8,6 +8,7 @@ import './stylepc.scss';
 
 class Body extends Component {
 
+  //Variable utilizada para comprobar el montaje del componente en el DOM virtual
   _isMounted = false;
 
   componentDidMount() {
@@ -20,7 +21,7 @@ class Body extends Component {
     fetchDeliveryNote()
   }
 
-  //Cada 10 minutos comprueba si han habido cambios en Pedidos o Albaradnes
+  //Cada 10 minutos comprueba si han habido cambios en Pedidos o Albaranes
   componentDidUpdate(preProps) {
 
     const { fetchOrders, fetchDeliveryNote } = this.props;
@@ -32,6 +33,7 @@ class Body extends Component {
     }
   }
 
+  //Se desmonta el componente correctamente
   componentWillUnmount() {
     this._isMounted = false;
   }
@@ -48,12 +50,14 @@ class Body extends Component {
   }
 }
 
+//Se declaran los state a importar del storage
 const mapStateToProps = state => ({
   clock: state.clock,
   orders: state.orders,
   deliveryNote: state.deliveryNote,
 });
 
+//Se declaran los dispatch a importar del storage
 const mapDispatchToProps = (dispatch) => {
 
   return {

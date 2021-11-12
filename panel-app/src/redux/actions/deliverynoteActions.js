@@ -1,3 +1,7 @@
+/**
+ * Actions relacionadas con los Albaranes
+ */
+
 import axios from 'axios';
 export const DELIVERY_NOTE_REQUEST = 'DELIVERY_NOTE_REQUEST';
 export const DELIVERY_NOTE_SUCCESS = 'DELIVERY_NOTE_SUCCESS';
@@ -21,13 +25,15 @@ export const FETCH_DELIVERY_NOTE_ERROR = () => {
     }
 }
 
+
+//Función asincrona que recupera el total de Albaranes
 export const fetchDeliveryNote = () => async dispatch => {
 
     dispatch({ type: 'DELIVERY_NOTE_REQUEST' })
 
     var url = 'http://192.168.1.155/php/query.php';
     var bodyFormData = new FormData();
-    bodyFormData.append('action', 'getDeliveryNote');
+    bodyFormData.append('action', 'getDeliveryNotes');
     
 
     await axios({
@@ -40,7 +46,6 @@ export const fetchDeliveryNote = () => async dispatch => {
     }).then(
 
         res => {
-            
             dispatch({ type: 'DELIVERY_NOTE_SUCCESS', payload: res.data })
         }
 

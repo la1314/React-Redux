@@ -1,7 +1,13 @@
+/**
+ * Actions relacionadas con los mensajes
+ */
+
 import axios from 'axios';
 export const NOTES_REQUEST = 'NOTES_REQUEST';
 export const NOTES_SUCCESS = 'NOTES_SUCCESS';
 export const NOTES_ERROR = 'NOTES_ERROR';
+
+
 
 export const FETCH_NOTES_REQUEST = () => {
   return {
@@ -21,6 +27,7 @@ export const FETCH_NOTES_ERROR = () => {
   }
 }
 
+//Función asincrona que recupera los mensajes
 export const fetchNotes = () => async dispatch => {
 
   dispatch({ type: 'NOTES_REQUEST' })
@@ -28,7 +35,6 @@ export const fetchNotes = () => async dispatch => {
   var url = 'http://192.168.1.155/php/query.php';
   var bodyFormData = new FormData();
   bodyFormData.append('action', 'getNotes');
-
 
   await axios({
     method: 'post',

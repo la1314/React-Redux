@@ -7,6 +7,7 @@ import './stylepc.scss';
 
 class Header extends Component {
 
+  //Variable utilizada para comprobar el montaje del componente en el DOM virtual
   _isMounted = false;
 
   componentDidMount() {
@@ -25,6 +26,7 @@ class Header extends Component {
 
 
   //Cada 30 minutos comprueba que la hora de la app sea igual a la del servidor
+  //Hay una pequeña desviación en milisegundos
   componentDidUpdate(preProps) {
 
     const { fetchClock } = this.props;
@@ -35,6 +37,7 @@ class Header extends Component {
     }
   }
 
+  //Se desmonta el componente correctamente y se limpia el intervalo creado
   componentWillUnmount() {
     
     this._isMounted = false;
@@ -53,12 +56,12 @@ class Header extends Component {
   }
 }
 
-//Se declaran los state a importar
+//Se declaran los state a importar del storage
 const mapStateToProps = state => ({
   clock: state.clock,
 });
 
-//Se declaran los dispatch a importar
+//Se declaran los dispatch a importar del storage
 const mapDispatchToProps = (dispatch) => {
 
   return {
@@ -67,5 +70,6 @@ const mapDispatchToProps = (dispatch) => {
     get_countDown: () => dispatch({ type: 'GET_COUNTDOWN' }),
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
