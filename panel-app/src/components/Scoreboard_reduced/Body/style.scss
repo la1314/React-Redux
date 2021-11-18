@@ -10,6 +10,7 @@ $font-body-text-color: white;
     height: 50vh;
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
    
     .acb_text_R {
         
@@ -19,9 +20,20 @@ $font-body-text-color: white;
         font-size: 10vmin;
         text-align: justify;
         border: $border-type $border-grueso $border-color;
+        border-bottom: 0;
+    }
 
+    .acb_text_by {
+        
+        display: grid;
+        padding: 3vmin;
+        color: $font-body-text-color;
+        font-size: 10vmin;
+        border: $border-type $border-grueso $border-color;
+        border-top: 0;
         //Centra el contenido
-        place-items: center;
+        
+        text-align: right !important;
     }
 }
 

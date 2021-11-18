@@ -17,13 +17,13 @@ function page(props) {
   return (
     <div className='app_container'>
 
-      {1 ?
+      {panel ?
         <HEADER />
         :
         <HEADER_R />
       }
 
-      {1 ?
+      {panel ?
         <BODY />
         :
         <BODY_R />

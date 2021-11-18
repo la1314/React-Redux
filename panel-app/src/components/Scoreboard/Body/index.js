@@ -21,12 +21,12 @@ class Body extends Component {
     fetchDeliveryNote()
   }
 
-  //Cada 10 minutos comprueba si han habido cambios en Pedidos o Albaranes
+  //Cada 5 minutos comprueba si han habido cambios en Pedidos o Albaranes
   componentDidUpdate(preProps) {
 
     const { fetchOrders, fetchDeliveryNote } = this.props;
 
-    if ((preProps.clock.min % 10 === 0) & preProps.clock.seg === 0) {
+    if ((preProps.clock.min % 5 === 0) & preProps.clock.seg === 0) {
 
       fetchOrders()
       fetchDeliveryNote()

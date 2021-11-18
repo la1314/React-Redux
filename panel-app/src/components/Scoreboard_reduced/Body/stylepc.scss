@@ -16,9 +16,16 @@ $border-fino: 2.5px;
             text-align: justify;
             border: $border-type $border-grueso $border-color;
             border-top: 0;
+            border-bottom: 0;
+        }
 
-            //Centtra el contenido
-            place-items: center;
+        .acb_text_by {
+            display: grid;
+            padding: 5vmin;
+            font-size: 7vmin;
+            text-align: right !important;
+            
+            
         }
     }
 }

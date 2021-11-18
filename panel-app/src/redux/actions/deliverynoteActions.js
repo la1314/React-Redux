@@ -31,6 +31,7 @@ export const fetchDeliveryNote = () => async dispatch => {
 
     dispatch({ type: 'DELIVERY_NOTE_REQUEST' })
 
+    // '../php/query.php' una vez toque hacer el Build
     var url = 'http://192.168.1.155/php/query.php';
     var bodyFormData = new FormData();
     bodyFormData.append('action', 'getDeliveryNotes');

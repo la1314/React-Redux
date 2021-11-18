@@ -4,38 +4,31 @@ import Page from './page';
 import './style.scss';
 
 class Main extends Component {
+    //Variable utilizada para comprobar el montaje del componente en el DOM virtual
+    _isMounted = false;
 
-    //TODO implementar el update del state panel
-    //Se comprueba cada 5 segundos si han pasado los minutos necesarios
-    //para cambiar el tipo de panel
+    //Componente montado correctamente 
     componentDidMount() {
-
+        this._isMounted = true;
     }
 
+    //Se desmonta el componente correctamente 
     componentWillUnmount() {
-
+        this._isMounted = false;
     }
 
     render() {
-
+        const { panel } = this.props;
         return (
-            <Page />
+            <Page panel={panel} />
         )
     }
 }
 
 //Se declaran los state a importar del storage
 const mapStateToProps = state => ({
-
+    panel: state.panel.type
 });
 
-//Se declaran los dispatch a importar del storage
-const mapDispatchToProps = (dispatch) => {
 
-    return {
-        // Dispatching plain actions
-        //dispatchPanel: (value) => dispatch({ type: 'PANEL_SUCCESS', payload: value })
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps)(Main);

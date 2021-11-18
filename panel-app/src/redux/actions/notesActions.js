@@ -46,8 +46,9 @@ export const fetchNotes = () => async dispatch => {
   }).then(
 
     res => {
-      
-      dispatch({ type: 'NOTES_SUCCESS', payload: res.data })
+
+      //El php devuelve un JSON
+      dispatch({ type: 'NOTES_SUCCESS', payload: res.data[0] })
     }
 
   ).catch(error => {

@@ -74,13 +74,14 @@ export default function reducer(state = initialProps, action) {
 }
 
 
-//Devuelve la fecha Countdown
+//Devuelve la fecha Countdown considerando el día actual y la hora de salida
 function getWorkingDay(days, today) {
 
   const newDate = new Date(today);
   const day = today.getDay();
   const hour = today.getHours();
   var obj = {};
+  //Indica si se encuenta en rango de jornada
   var working = false;
 
   // Comprueba que se esta en un día laborable 1 Lunes - 5 Viernes
@@ -89,9 +90,8 @@ function getWorkingDay(days, today) {
     const inicio_Jornada = days[today.getDay()][0];
     const Fin_Jornada = days[today.getDay()][1];
 
-
+    //Si la hora de newDate está dentro del rango 
     if (hour >= inicio_Jornada & hour < Fin_Jornada) {
-
 
       newDate.setHours(days[newDate.getDay()][1], 0, 0);
 
