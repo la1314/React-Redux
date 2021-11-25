@@ -35,7 +35,8 @@ export const fetchClock = () => async dispatch => {
     var bodyFormData = new FormData();
     bodyFormData.append('action', 'getDate');
      // '../php/query.php' una vez toque hacer el Build
-    var url = 'http://192.168.1.155/php/query.php';
+     // 'http://192.168.1.155/php/query.php'
+    var url = '../php/query.php';
 
     await axios({
         method: 'post',

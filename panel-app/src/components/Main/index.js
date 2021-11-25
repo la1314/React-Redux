@@ -11,10 +11,19 @@ class Main extends Component {
     componentDidMount() {
         this._isMounted = true;
     }
+    componentDidUpdate(preProps) {
+
+        const { dispatchPanel, panel } = this.props;
+
+        if ((preProps.clock.min % 10 === 0) & preProps.clock.seg === 0) {
+            dispatchPanel(!panel)
+        }
+    }
 
     //Se desmonta el componente correctamente 
     componentWillUnmount() {
         this._isMounted = false;
+
     }
 
     render() {
@@ -27,8 +36,18 @@ class Main extends Component {
 
 //Se declaran los state a importar del storage
 const mapStateToProps = state => ({
-    panel: state.panel.type
+    panel: state.panel.type,
+    clock: state.clock
 });
 
+//Se declaran los dispatch a importar del storage
+const mapDispatchToProps = (dispatch) => {
 
-export default connect(mapStateToProps)(Main);
+    return {
+        // dispatching plain actions
+        dispatchPanel: (value) => dispatch({ type: 'PANEL_SUCCESS', payload: value })
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

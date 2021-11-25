@@ -32,7 +32,8 @@ export const fetchNotes = () => async dispatch => {
 
   dispatch({ type: 'NOTES_REQUEST' })
 
-  var url = 'http://192.168.1.155/php/query.php';
+  //http://192.168.1.155/php/query.php
+  var url = '../php/query.php';
   var bodyFormData = new FormData();
   bodyFormData.append('action', 'getNotes');
 

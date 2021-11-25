@@ -24,7 +24,6 @@ class Header extends Component {
     }, 1000);
   }
 
-
   //Cada 5 minutos comprueba que la hora de la app sea igual a la del servidor
   //Hay una pequeña desviación en milisegundos
   componentDidUpdate(preProps) {
@@ -34,10 +33,7 @@ class Header extends Component {
     if ( (preProps.clock.min%5 === 0) & preProps.clock.seg === 0) {
       
       fetchClock();
-      
     } 
-
-
   }
 
   //Se desmonta el componente correctamente y se limpia el intervalo creado
@@ -72,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
     // dispatching plain actions
     fetchClock: () => dispatch(fetchClock()),
     get_countDown: () => dispatch({ type: 'GET_COUNTDOWN' }),
-    dispatchPanel: (value) => dispatch({ type: 'PANEL_SUCCESS', payload: value })
+   
   }
 }
 
