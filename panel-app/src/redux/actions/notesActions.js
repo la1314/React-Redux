@@ -32,9 +32,9 @@ export const fetchNotes = () => async dispatch => {
 
   dispatch({ type: 'NOTES_REQUEST' })
 
-  //http://192.168.1.155/php/query.php
-  var url = '../php/query.php';
-  var bodyFormData = new FormData();
+  let url = 'http://192.168.1.149/php/query.php';
+  //let url = '../php/query.php';
+  let bodyFormData = new FormData();
   bodyFormData.append('action', 'getNotes');
 
   await axios({

@@ -30,10 +30,10 @@ export const fetchOrders = () => async dispatch => {
 
   dispatch({ type: 'ORDERS_REQUEST' })
 
-   // '../php/query.php' una vez toque hacer el Build
-   //'http://192.168.1.155/php/query.php'
-  var url = '../php/query.php';
-  var bodyFormData = new FormData();
+  
+  let url = 'http://192.168.1.149/php/query.php'
+  //let url = '../php/query.php';
+  let bodyFormData = new FormData();
   bodyFormData.append('action', 'getOrders');
 
 

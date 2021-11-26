@@ -37,7 +37,8 @@ class Main extends Component {
 //Se declaran los state a importar del storage
 const mapStateToProps = state => ({
     panel: state.panel.type,
-    clock: state.clock
+    clock: state.clock,
+    delay: state.delay
 });
 
 //Se declaran los dispatch a importar del storage
@@ -45,6 +46,7 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         // dispatching plain actions
+        dispatchDelay: () => dispatch(fetchDelay()),
         dispatchPanel: (value) => dispatch({ type: 'PANEL_SUCCESS', payload: value })
     }
 }

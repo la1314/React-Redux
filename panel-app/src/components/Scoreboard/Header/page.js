@@ -9,8 +9,8 @@ function page(props) {
     <div className='app_container_header'>
 
       {clock.working_day
-        ? <div className='ach_text'>Fin de Jornada en</div>
-        : <div className='ach_text'>Inicio de Jornada en</div>
+        ? <div className='ach_text'>Tiempo restante</div>
+        : <div className='ach_text'>Tiempo para inicio</div>
       }
 
       {clock.c_days === undefined

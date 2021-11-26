@@ -1,8 +1,17 @@
 @font-face {
     font-family: "scoreboard";
-    src: local("scoreboard"), url(../../fonts/scoreboard.ttf) format("truetype");
+    src: local("scoreboard"), url(../../fonts/scoreboard.ttf) format("truetype");  
+    
+}
+
+@font-face {
     font-family: "Orbitron";
     src: local("Orbitron"), url(../../fonts/Orbitron.ttf) format("truetype");
+    //Prueba
+    font-weight: bold;
+}
+
+@font-face {
     font-family: "PatuaOne";
     src: local("PatuaOne"), url(../../fonts/PatuaOne.ttf) format("truetype");
 }

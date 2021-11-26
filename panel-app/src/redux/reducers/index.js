@@ -6,7 +6,7 @@ import deliverynoteReducers from './deliverynoteReducers';
 import ordersReducers from './ordersReducers';
 import panelReducers from './panelReducers';
 import notesReducers from './notesReducers';
-
+import delayReducers from './delayReducers';
 
 // Al combinar los Reducers  los exportamos con el nombre que tendrán finalmente como State
 
@@ -16,5 +16,6 @@ export default combineReducers({
     deliveryNote: deliverynoteReducers,
     orders: ordersReducers,
     panel: panelReducers,
-    notes: notesReducers
+    notes: notesReducers,
+    delay: delayReducers
 })

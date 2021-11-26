@@ -32,11 +32,11 @@ export const GET_COUNTDOWN_ACTION = () => {
 export const fetchClock = () => async dispatch => {
 
     dispatch({ type: 'CLOCK_REQUEST' })
-    var bodyFormData = new FormData();
+    let bodyFormData = new FormData();
     bodyFormData.append('action', 'getDate');
-     // '../php/query.php' una vez toque hacer el Build
-     // 'http://192.168.1.155/php/query.php'
-    var url = '../php/query.php';
+    // '../php/query.php' una vez toque hacer el Build
+    let url = 'http://192.168.1.149/php/query.php';
+    //let url = '../php/query.php';
 
     await axios({
         method: 'post',
@@ -57,7 +57,7 @@ export const fetchClock = () => async dispatch => {
             const minutes = date[1].split(':')[1];
             const seconds = date[1].split(':')[2];
 
-            const today = new Date(year, month-1, day, hour, minutes, seconds);
+            const today = new Date(year, month - 1, day, hour, minutes, seconds);
             dispatch({ type: 'CLOCK_SUCCESS', payload: today })
         }
 
