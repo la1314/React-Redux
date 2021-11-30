@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchDelay } from '../../redux/actions/delayActions';
 import Page from './page';
 import './style.scss';
 
@@ -10,20 +11,42 @@ class Main extends Component {
     //Componente montado correctamente 
     componentDidMount() {
         this._isMounted = true;
+        const { dispatchDelay } = this.props;
+        dispatchDelay();
+
+        //TODO
+        this.carrouselTimer = setInterval(() => {
+
+        }, 15000);
     }
+
+    
     componentDidUpdate(preProps) {
 
-        const { dispatchPanel, panel } = this.props;
+        const { dispatchPanel, panel, dispatchDelay, delay } = this.props;
 
-        if ((preProps.clock.min % 10 === 0) & preProps.clock.seg === 0) {
-            dispatchPanel(!panel)
+        //Cada 2 minutos se actualiza la lista de pedidos retrasados
+        if ((preProps.clock.min % 2 === 0) & preProps.clock.seg === 0) {
+            dispatchDelay();
+        }
+
+        //Cada minuto se comprube si aún hay pedidos retrasados para mostrar un panel u otro
+        if ((preProps.clock.min % 1 === 0) & preProps.clock.seg === 0) {
+
+            if (delay.data.length) {
+                dispatchPanel(false)
+            } else {
+                dispatchPanel(!panel)
+            }
+
         }
     }
 
     //Se desmonta el componente correctamente 
     componentWillUnmount() {
         this._isMounted = false;
-
+        //TODO
+        clearInterval(this.carrouselTimer);
     }
 
     render() {

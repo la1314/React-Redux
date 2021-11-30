@@ -24,11 +24,12 @@ class Body extends Component {
   
   render() {
     
-    const {notes} = this.props;
+    const {notes, delay} = this.props;
 
     return (
       <Page
         notes = {notes.data}
+        delay = {delay}
       />
     )
   }
@@ -36,7 +37,8 @@ class Body extends Component {
 
 //Se declaran los state a importar del storage
 const mapStateToProps = state => ({
-  notes: state.notes
+  notes: state.notes,
+  delay: state.delay
 });
 
 //Se declaran los dispatch a importar del storage

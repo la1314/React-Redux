@@ -12,6 +12,14 @@ $font-body-text-color: white;
     grid-template-columns: 1fr;
     grid-template-rows: 3fr 1fr;
    
+    .acb_text_U{
+        display: grid;
+        border: $border-type $border-grueso $border-color;
+        border-top: 0;
+        font-size: 10vmin;
+        color: $font-body-text-color;
+    }
+
     .acb_text_R {
         
         display: grid;
@@ -34,6 +42,13 @@ $font-body-text-color: white;
         //Centra el contenido
         
         text-align: right !important;
+    }
+
+    .acb_text_div_Urgencia {
+
+        display: grid;
+        grid-template-columns: 0.5fr 1fr 5fr;
+        text-align: left !important;
     }
 }
 

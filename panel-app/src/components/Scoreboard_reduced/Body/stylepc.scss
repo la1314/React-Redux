@@ -9,23 +9,35 @@ $border-fino: 2.5px;
         display: grid;
         grid-template-columns: 1fr;
 
-        .acb_text_R {
+        .acb_div_Nota {
             display: grid;
-            padding: 5vmin;
-            font-size: 8vmin;
-            text-align: justify;
-            border: $border-type $border-grueso $border-color;
-            border-top: 0;
-            border-bottom: 0;
+            height: 65vh;
+            .acb_text_R {
+                display: grid;
+                padding: 5vmin;
+                font-size: 8vmin;
+                text-align: justify;
+                border: $border-type $border-grueso $border-color;
+                border-top: 0;
+                border-bottom: 0;
+            }
+
+            .acb_text_by {
+                display: grid;
+                padding: 5vmin;
+                font-size: 7vmin;
+                text-align: right !important;
+            }
         }
 
-        .acb_text_by {
+        .acb_div_Urgencia {
             display: grid;
-            padding: 5vmin;
-            font-size: 7vmin;
-            text-align: right !important;
-            
-            
+            height: 65vh;
+            .acb_text_R {
+                display: grid;
+                height: 65vh;
+                border: $border-type $border-grueso $border-color;
+            }
         }
     }
 }
