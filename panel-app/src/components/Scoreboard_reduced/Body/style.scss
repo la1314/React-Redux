@@ -1,4 +1,4 @@
-$border-color: rgb(151, 96, 96);
+$border-color: #3F3F42;
 $border-type: solid;
 $border-grueso: 5px;
 $border-fino: 2.5px;
@@ -6,13 +6,12 @@ $border-fino: 2.5px;
 $font-body-text-color: white;
 
 .app_container_body_R {
-
     height: 50vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 3fr 1fr;
-   
-    .acb_text_U{
+
+    .acb_text_U {
         display: grid;
         border: $border-type $border-grueso $border-color;
         border-top: 0;
@@ -21,7 +20,6 @@ $font-body-text-color: white;
     }
 
     .acb_text_R {
-        
         display: grid;
         padding: 3vmin;
         color: $font-body-text-color;
@@ -32,7 +30,6 @@ $font-body-text-color: white;
     }
 
     .acb_text_by {
-        
         display: grid;
         padding: 3vmin;
         color: $font-body-text-color;
@@ -40,17 +37,18 @@ $font-body-text-color: white;
         border: $border-type $border-grueso $border-color;
         border-top: 0;
         //Centra el contenido
-        
+
         text-align: right !important;
     }
 
+    //Afecta a las urgencias (Pedidos retrasados)
     .acb_text_div_Urgencia {
-
         display: grid;
-        grid-template-columns: 0.5fr 1fr 5fr;
-        text-align: left !important;
+        grid-template-columns: 1fr 8fr;
+        column-gap: 25px;
+        font-size: 9vmin;
+        div {
+            text-align: left;
+        }
     }
 }
-
-
-//Phone Resolution

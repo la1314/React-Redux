@@ -3,6 +3,7 @@ const initialState = {
   data: [],
   carrousel: [],
   iteration: 0,
+  actual_iteration: 0,
   error: ''
 };
 
@@ -35,15 +36,21 @@ export default function reducer(state = initialState, action) {
       }
 
     case "CARROUSEL_SUCCESS":
+
+      const res = splitData(state.data, 3);
       return {
         ...state,
-        carrousel: action.payload,
+        carrousel: res,
+        iteration: res.length-1
       }
 
-    case "ITERATION_SUCCESS":
+    case "ACTUAL_ITERATION_SUCCESS":
+
+      const it = updateActualIteration(state.iteration, state.actual_iteration);
+
       return {
         ...state,
-        iteration: state.data.length,
+        actual_iteration: it
       }
 
     default:
@@ -54,7 +61,35 @@ export default function reducer(state = initialState, action) {
   }
 }
 
-//TODO
-function name(params) {
-  
+/**
+ * Devuelve los datos divididos en un array de chunks
+ */
+const splitData = (data, chunks) => {
+
+  let chunks_arr = [];
+
+  for (let index = 0, j = data.length; index < j; index += chunks) {
+    chunks_arr.push(data.slice(index, index + chunks))
+  }
+
+  return chunks_arr;
+}
+
+/** 
+ * Duevuelve la iteración actual que ha de mostrar el carrousel
+*/
+const updateActualIteration = (iteration, actual) => {
+
+  let x = 0;
+
+  if (iteration !== 0) {
+    if ( actual < iteration) {
+      x = actual + 1;
+    } else {
+      x = 0;
+    }
+  }
+
+  return x;
+
 }

@@ -1,4 +1,4 @@
-$border-color: rgb(151, 96, 96);
+$border-color: #3F3F42;
 $border-type: solid;
 $border-grueso: 5px;
 $border-fino: 2.5px;
@@ -12,10 +12,12 @@ $border-fino: 2.5px;
         .acb_div_Nota {
             display: grid;
             height: 65vh;
+            grid-template-rows: 1.5fr 0.5fr;
+
             .acb_text_R {
                 display: grid;
-                padding: 5vmin;
-                font-size: 8vmin;
+                padding: 1.5vmin;
+                font-size: 7vmin;
                 text-align: justify;
                 border: $border-type $border-grueso $border-color;
                 border-top: 0;
@@ -24,8 +26,8 @@ $border-fino: 2.5px;
 
             .acb_text_by {
                 display: grid;
-                padding: 5vmin;
-                font-size: 7vmin;
+                padding: 1.5vmin;
+                font-size: 6vmin;
                 text-align: right !important;
             }
         }

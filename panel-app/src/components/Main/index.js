@@ -14,16 +14,11 @@ class Main extends Component {
         const { dispatchDelay } = this.props;
         dispatchDelay();
 
-        //TODO
-        this.carrouselTimer = setInterval(() => {
-
-        }, 15000);
     }
 
-    
     componentDidUpdate(preProps) {
 
-        const { dispatchPanel, panel, dispatchDelay, delay } = this.props;
+        const { dispatchPanel, panel, dispatchDelay, delay, fetchActualIteration } = this.props;
 
         //Cada 2 minutos se actualiza la lista de pedidos retrasados
         if ((preProps.clock.min % 2 === 0) & preProps.clock.seg === 0) {
@@ -38,15 +33,24 @@ class Main extends Component {
             } else {
                 dispatchPanel(!panel)
             }
+        }
+
+        if (delay.data) {
+            let rango = [0, 15, 35, 45]
+
+            if ((preProps.clock.min % 1 === 0) & rango.includes(preProps.clock.seg)) {
+
+                fetchActualIteration()
+            }
 
         }
+
+
     }
 
     //Se desmonta el componente correctamente 
     componentWillUnmount() {
         this._isMounted = false;
-        //TODO
-        clearInterval(this.carrouselTimer);
     }
 
     render() {
@@ -70,7 +74,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         // dispatching plain actions
         dispatchDelay: () => dispatch(fetchDelay()),
-        dispatchPanel: (value) => dispatch({ type: 'PANEL_SUCCESS', payload: value })
+        dispatchPanel: (value) => dispatch({ type: 'PANEL_SUCCESS', payload: value }),
+        fetchActualIteration: () => dispatch({ type: 'ACTUAL_ITERATION_SUCCESS' }),
     }
 }
 

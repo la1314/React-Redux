@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Page from './page';
 import { fetchNotes } from '../../../redux/actions/notesActions';
+
 import './style.scss';
 import './stylepc.scss';
 
@@ -12,7 +13,7 @@ class Body extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    
+
     const { fetchNotes } = this.props;
     fetchNotes();
   }
@@ -21,15 +22,16 @@ class Body extends Component {
   componentWillUnmount() {
     this._isMounted = false;
   }
-  
+
   render() {
-    
-    const {notes, delay} = this.props;
+
+    const { notes, delay } = this.props;
 
     return (
       <Page
-        notes = {notes.data}
-        delay = {delay}
+        notes={notes.data}
+        actual_iteration={delay.actual_iteration}
+        delay={delay}
       />
     )
   }
@@ -46,7 +48,8 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     // dispatching plain actions
-    fetchNotes: () => dispatch(fetchNotes())
+    fetchNotes: () => dispatch(fetchNotes()),
+   
   }
 }
 

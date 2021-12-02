@@ -7,7 +7,7 @@ export const DELAY_REQUEST = 'DELAY_REQUEST';
 export const DELAY_SUCCESS = 'DELAY_SUCCESS';
 export const DELAY_ERROR = 'DELAY_ERROR';
 export const CARROUSEL_SUCCESS = 'CARROUSEL_SUCCESS';
-export const ITERATION_SUCCESS = 'ITERATION_SUCCESS';
+export const ACTUAL_ITERATION_SUCCESS = 'ACTUAL_ITERATION_SUCCESS';
 
 export const FETCH_DELAY_REQUEST = () => {
   return {
@@ -33,9 +33,9 @@ export const FETCH_CARROUSEL_SUCCESS = () => {
   }
 }
 
-export const FETCH_ITERATION_SUCCESS = () => {
+export const FETCH_ACTUAL_ITERATION_SUCCESS = () => {
   return {
-    type: "ITERATION_SUCCESS"
+    type: "ACTUAL_ITERATION_SUCCESS"
   }
 }
 
@@ -60,7 +60,8 @@ export const fetchDelay = () => async dispatch => {
 
     res => {
       dispatch({ type: 'DELAY_SUCCESS', payload: res.data })
-      dispatch({ type: 'ITERATION_SUCCESS'})
+      dispatch({ type: 'CARROUSEL_SUCCESS'})
+      
     }
 
   ).catch(error => {
