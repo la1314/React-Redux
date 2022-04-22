@@ -18,7 +18,7 @@ class Main extends Component {
 
     componentDidUpdate(preProps) {
 
-        const { dispatchPanel, panel, dispatchDelay, delay, fetchActualIteration } = this.props;
+        const { dispatchPanel, dispatchDelay, delay, fetchActualIteration } = this.props;
 
         //Cada 2 minutos se actualiza la lista de pedidos retrasados
         if ((preProps.clock.min % 2 === 0) & preProps.clock.seg === 0) {
@@ -31,15 +31,15 @@ class Main extends Component {
             if (delay.data.length) {
                 dispatchPanel(false)
             } else {
-                dispatchPanel(!panel)
+                dispatchPanel(true)
             }
         }
 
+        //Se comprueba que existan datos en data para proceder a iterar el carrousel
         if (delay.data) {
             let rango = [0, 15, 35, 45]
 
             if ((preProps.clock.min % 1 === 0) & rango.includes(preProps.clock.seg)) {
-
                 fetchActualIteration()
             }
 
@@ -65,7 +65,9 @@ class Main extends Component {
 const mapStateToProps = state => ({
     panel: state.panel.type,
     clock: state.clock,
-    delay: state.delay
+    delay: state.delay,
+    orders: state.orders,
+    deliveryNote: state.deliveryNote
 });
 
 //Se declaran los dispatch a importar del storage

@@ -1,5 +1,5 @@
 const initialState = {
-    type: false
+    type: true
 };
 
 export default function reducer(state = initialState, action) {

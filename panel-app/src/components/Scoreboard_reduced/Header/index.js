@@ -29,18 +29,18 @@ class Header extends Component {
   }
 
 
-  //Cada 30 minutos comprueba que la hora de la app sea igual a la del servidor
-  //Cada 10 minutos comprueba si han habido cambios en Pedidos o Albaranes
+  //Cada 5 minutos comprueba que la hora de la app sea igual a la del servidor
+  //Cada 2 minutos comprueba si han habido cambios en Pedidos o Albaranes
   componentDidUpdate(preProps) {
 
     const { fetchClock, fetchOrders, fetchDeliveryNote } = this.props;
 
-    if ((preProps.clock.min % 30 === 0) & preProps.clock.seg === 0) {
+    if ((preProps.clock.min % 5 === 0) & preProps.clock.seg === 0) {
 
       fetchClock()
     }
 
-    if ((preProps.clock.min % 10 === 0) & preProps.clock.seg === 0) {
+    if ((preProps.clock.min % 2 === 0) & preProps.clock.seg === 0) {
 
       fetchOrders()
       fetchDeliveryNote()

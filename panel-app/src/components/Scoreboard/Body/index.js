@@ -26,7 +26,7 @@ class Body extends Component {
 
     const { fetchOrders, fetchDeliveryNote } = this.props;
 
-    if ((preProps.clock.min % 5 === 0) & preProps.clock.seg === 0) {
+    if ((preProps.clock.min % 2 === 0) & preProps.clock.seg === 0) {
 
       fetchOrders()
       fetchDeliveryNote()
